@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\News365.Business\News365.Business.csproj" />
+    <ProjectReference Include="..\News365.Core\News365.Core.csproj" />
+    <ProjectReference Include="..\News365.DataAccess\News365.DataAccess.csproj" />
+    <ProjectReference Include="..\News365.Entities\News365.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
