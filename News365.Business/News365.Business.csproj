@@ -6,4 +6,17 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\News365.Core\News365.Core.csproj" />
+    <ProjectReference Include="..\News365.DataAccess\News365.DataAccess.csproj" />
+    <ProjectReference Include="..\News365.Entities\News365.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

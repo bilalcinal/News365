@@ -6,6 +6,7 @@ namespace News365.Entities.Concrete;
     {
     
        public string Name { get; set; }
+       public string SlugUrl { get; set; }
        
 
     }

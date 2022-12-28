@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using News365.Core.Utilities.Result;
+using News365.Entities.Concrete;
 
-namespace News365.Business.Abstract
+namespace News365.Business.Abstract;
+
+public interface ICategoryService
 {
-    public interface ICategoryService
-    {
-        
-    }
+Task<IDataResult<Category>> AddAsync(Category category);
+
+  
 }
