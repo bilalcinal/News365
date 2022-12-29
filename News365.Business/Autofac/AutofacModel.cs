@@ -1,12 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
+using News365.Business.Abstract;
+using News365.Business.Concrete;
+using News365.DataAccess.Abstract;
+using News365.DataAccess.Concrete;
 
-namespace News365.Business.Autofac
+namespace News365.Business.Autofac;
+
+public class AutofacBusinessModule : Module
 {
-    public class AutofacModel
+    protected override void Load(ContainerBuilder builder)
     {
-        
-    }
+        #region Category
+        builder.RegisterType<CategoryManager>().As<ICategoryService>();
+        builder.RegisterType<EfCategoryDal>().As<ICategoryDal>();
+        #endregion Category
+    }   
 }

@@ -22,4 +22,10 @@ public class CategoryManager : ICategoryService
           return new SuccessDataResult<Category>(category, Messages.AddMessage);
 
     }
+
+     public async Task<IDataResult<List<Category>>> GetCategoryListAsync()
+    {
+        var resultList = await _categoryDal.GetListAsync(x => x.Id == null);
+        return new SuccessDataResult<List<Category>>(resultList.ToList());
+    }
 }
