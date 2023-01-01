@@ -1,0 +1,29 @@
+@import "base/fonts";
+@import "base/variables";
+@import "base/media";
+@import "base/animation";
+@import "base/mixin";
+@import "base/extend";
+@import "base/reset"; 
+
+/*components*/
+@import "components/rfs";
+@import "components/heading";
+
+/*card*/
+@import "cardlar/maslahar-card";
+@import "cardlar/mahsul-card";
+
+/*Layout*/
+@import "layout/navbar-menu";
+@import "layout/footer";
+@import "layout/menu-drop"; 
+
+
+/*page*/
+@import "pages/home";
+@import "pages/alaqa";
+@import "pages/layihaler";
+@import "pages/haqqımızda";
+@import "pages/mahsullarımız";
+@import "pages/maslahat-detail";

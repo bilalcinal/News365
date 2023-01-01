@@ -1,0 +1,190 @@
+.home-section1-main {
+    .home-slider-div { height: calc(100vh - 98px); 
+        .owl-item{
+            &.active{
+                .slogan-heading { @include fadeslow;}
+
+                .slogan-text {@include fadeslow2;}
+            }
+        }
+        .home-slider {
+            .item { height: calc(100vh - 98px); 
+
+                &::before { content: ''; width: 100%; height: 100%; position: absolute; top: 0; background-color: rgba(15, 119, 159, 0.7); }
+
+                img { width: 100%; height: 100%; 
+                    object-fit: cover; }
+
+                .slider-text { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; 
+                    @include mobile-l{
+                        width: 100%;
+                    }
+                    .slogan-heading { @include font-size(45px); color: #fff; font-family: $semibold; margin-bottom: 25px; }
+
+                    .slogan-text { color: #fff; line-height: 21px; font-family: $medium; }
+                }
+            }
+
+            .owl-nav {
+                .owl-next,
+                .owl-prev { position: absolute; top: 44%; width: 50px; height: 50px; background-color: #578e9e; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; border-radius: 50%; 
+                    @extend %transition3; 
+                    @include mobile-l{
+                        top: inherit;
+                        bottom: 50px;
+                    }
+                    i { color: #fff; }
+
+                    &:hover { background-color: #0f779f; 
+
+                        i { color: #fff; }
+                    }
+                }
+
+                .owl-next { right: 100px;
+                    @include mobile-l{
+                        right: 150px;
+                    }
+                }
+
+                .owl-prev { left: 100px; 
+                    @include mobile-l{
+                        left: 150px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+.mahsullar-slider-main {
+    h2 { @include font-size(40px); font-family: $bold; color: #07526f; }
+
+    .home-mahsul-slider {
+
+        .mahsul-card-home { border-color: #0f779f; 
+            @include mobile-xl{
+                height: 291px;
+            }
+            @include mobile-l{
+                height: 199px;
+            }
+     
+            p { color: #0f779f; }
+
+            &:hover { background-color: #0f779f; 
+
+                p { color: #fff; }
+            }
+        }
+
+        .owl-nav {
+            @include mobile-l{
+                display: flex;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .owl-next,
+            .owl-prev { position: absolute; top: 44%; width: 50px; height: 50px; border: 1px solid #0f779f; background-color: #ffffff; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; border-radius: 50%; 
+                @extend %transition3; 
+                i { color: #0f779f; }
+                @include mobile-l{
+                    position: inherit;
+                    top: inherit;
+                }
+                &:hover { background-color: #0f779f; 
+
+                    i { color: #fff; }
+                }
+            }
+
+            .owl-next { right: -112px;
+                @include mobile-xl{
+                    right: -70px;
+                }
+                @include mobile-l{
+                    right: inherit;
+                }
+            }
+
+            .owl-prev { left: -112px;
+                @include mobile-xl{
+                    left: -70px;
+                }
+                @include mobile-l{
+                    left: inherit;
+                }
+            }
+        }
+    }
+}
+
+.home-category-section {
+    .home-category-card {        @media all and (min-width:1922px) { height: 450px; }
+
+        height: 384px; @include desktop-xl { height: 306px; }
+
+        @include desktop-l { height: 240px; }
+        @include desktop-sm{
+            height: 213px;
+        }
+        @include mobile-xl{
+            height: 269px;
+        }
+        &:hover {
+            .background-hovers { opacity: 1; padding: 40px; }
+
+        }
+
+        &::before { content: ''; background-color: rgba(15, 119, 159, 0.69); width: 100%; height: 100%; position: absolute; top: 0; }
+
+        .background-hovers { background-color: rgba(7, 82, 111, 0.8); width: 100%; height: 100%; 
+            @extend %transition3; opacity: 0; 
+
+            .hover-cizgi { border: 1px solid #fff; }
+        }
+
+        img { width: 100%; height: 100%; 
+            object-fit: cover; }
+
+        .category-name { font-size: 20px; font-family: $medium; color: #fff; z-index: 1; position: relative; }
+    }
+}
+
+
+.home-faydalı-maslahat { @include padding(60px 0 90px); 
+
+    .faydalı-maslahat-main {
+        h2 { @include font-size(40px); color: #07526f; font-family: $bold; @include margin-bottom(50px); }
+
+        .maslahat-dahacox { width: 140px; height: 45px; border-radius: 23px; border: 1px solid #0f779f; color: #0f779f; 
+            font-family: $medium; font-size: 17px; 
+                @include mobile-l{
+                    position: inherit !important;
+                    top: inherit;
+                    right: inherit;
+                    margin-top: 15px;
+
+                }
+            &:hover { background-color: #0f779f; color: #fff; }
+        }
+    }
+}
+
+.home-about-section { background-color: #0f779f; @include padding(25px 0 100px); 
+
+    .home-about-heading { @include font-size(150px); font-family: $arful; color: #fff; opacity: 0.1; text-align: center; margin-bottom: 45px; }
+
+    .about-home-main {
+        .home-about-image { height: 280px; 
+            object-fit: contain; width: 100%; @include mobile-l {     height: 147px;
+                object-position: bottom; }
+        }
+
+        p { color: #fff; font-family: $medium; font-size: 17px; margin-bottom: 25px; line-height: 23px; }
+    }
+}

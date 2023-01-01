@@ -1,0 +1,119 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr { margin: 0; padding: 0; border: 0; outline: 0; }
+
+html,
+body { height: 100%; overflow-x: hidden !important; }
+
+body { line-height: 1; }
+
+ol,
+ul { list-style: none; }
+
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+body { font-size: 17px; font-family: "SofiaPro-medium", sans-serif; box-sizing: border-box; color: #000; position: relative; overflow-x: hidden !important; }
+
+div,
+span,
+body p { margin: 0px; padding: 0px; }
+
+a { text-decoration: none !important; 
+
+  &:hover { text-decoration: none !important; }
+}
+
+input{
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+.btn {
+  &:focus { box-shadow: none !important; }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+
+@media (min-width: 1200px) {
+  .container-lg,
+  .container-md,
+  .container-xl,
+  .container,
+  .container-xxl { max-width: 1745px; }
+
+
+  .container-sm{
+    max-width: 1300px;
+  }
+
+
+
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+.rotate-90 { transform: rotate(-180deg); display: inline-block; transition: 0.3s ease all ; }
+
+.lb-loader, .lightbox {
+  position: fixed;
+}
+
+
+.overflow { overflow: hidden; }
+
+.overlay-body {  height: 100vh; background-color: rgba(0, 0, 0, 0.5); display: none;  z-index: 1; @include menu; }

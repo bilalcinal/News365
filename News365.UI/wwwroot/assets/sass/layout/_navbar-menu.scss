@@ -1,0 +1,92 @@
+.navbar { background-color: #ffffff; box-shadow: 0 3px 25px rgba(0, 0, 0, 0.3); 
+    .navbar-main { @include mobile-display {    height: 70px; }
+
+        .navbar-brand {     width: 114px;
+
+            @include mobile-xl{
+                width: 87px;
+            }
+            
+             @include mobile-l {     width: 81px; }
+
+            img { @extend %img-size; }
+        }
+
+        .navicon { z-index: 5; height: 23px; top: 0px; right: 0px; position: relative; 
+            
+            @include mobile-display { display: block !important;     top:1px; }
+
+            &::before { box-shadow: #000 0 14px 0 0; position: absolute; top: 0px; }
+
+            &::after { position: absolute; top: 7px; }
+
+            &::before,
+            &::after { background: #000; -webkit-backface-visibility: hidden; 
+                backface-visibility: hidden; content: ""; height: 3px; width: 25px; left: 0; border-radius: 5px; }
+        }
+
+        .navicon--active {
+
+            &::before { background: #000; box-shadow: #000 0 0 0 0; top: 9px; border-radius: 0px; -webkit-transform: rotate(225deg); transform: rotate(225deg); width: 25px !important; }
+
+            &::after { background: #000; top: 9px; -webkit-transform: rotate(315deg); border-radius: 0px; transform: rotate(315deg); width: 25px !important; margin-left: inherit; }
+        }
+
+        .navbar-collapse { z-index: 4;     height: 98px;  
+            @include mobile-display { height: 100vh; transition: ease 0.4s all; position: fixed; background-color: #fff; padding: 0 0px; box-shadow: 0 3px 25px rgba(37, 77, 128, 0.25); right: -100%; top: 0px; }
+
+            @include mobile-xl { width: 30%; }
+
+            @include mobile-l { width: 50%; }
+
+            .navbar-nav {
+
+                .nav-item {    height: 100%; @include mobile-display { width: 100%; height: fit-content; }
+
+                    .nav-link { height: 100%; color: #000; font-family: $semibold; @include font-size(19px); position: relative;                   
+                          cursor: pointer; 
+                          padding: 0px 25px;
+
+                        @include desktop-sm{
+                            font-size: 15px;
+                            padding: 0px 10px;
+                        }
+
+                         @include mobile-display { text-align: center; display: block !important;    padding: 15px 10px;  }
+
+                        @include mobile-l { font-size: 16px; }
+
+                        &.active, 
+                        &:hover { color: #fff;  background-color: #0f779f;
+
+                            .arrow { transform: rotate(180deg); transition: 0.4s ease all; @include mobile-display { transform: rotate(90deg); }
+                            }
+
+                            i { color: #fff; }
+                        }
+
+
+                        i { margin-left: 8px; width: 12px; font-size: 16px; color: #000;}
+
+                        .arrow { 
+                            
+                            @include mobile-display { position: absolute; left: 12px;     top: 14px; transform: rotate(90deg); font-size: 14px; }
+
+                            @include mobile-xsm { left: 2px; }
+                        }
+
+                    }
+
+                    .nav-mob-lang {
+                        .nav-link { padding: 10px 10px 10px; }
+                    }
+                }
+            }
+
+        }
+
+        .navbar-collapse--active { right: 0px; }
+    }
+
+
+}

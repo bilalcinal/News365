@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="Media Balans" />
-    <title>Cms Panel | Apollo</title>
+    <title>Cms Panel | News365</title>
     @RenderSection("Styles", required: false)
     <link href="~/assets-cms/css/styles.css" rel="stylesheet" />
     <link href="~/assets-cms/lib/toastr/build/toastr.min.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
     </div>
     <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
-        <a class="navbar-brand pe-3 ps-4 ps-lg-2" asp-area="Cms" asp-controller="Home" asp-action="Index">Apollo Admin</a>
+        <a class="navbar-brand pe-3 ps-4 ps-lg-2" asp-area="Cms" asp-controller="Home" asp-action="Index">News365 Admin</a>
         <ul class="navbar-nav align-items-center ms-auto">
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,8 +32,8 @@
                     <div class="dropdown-header d-flex align-items-center">
                         <img class="dropdown-user-img" src="~/assets-cms/img/illustrations/profiles/profile-2.png" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name">@User.Identity.Name</div>
-                            <div class="dropdown-user-details-email">@User.FindFirst(ClaimTypes.Email).Value</div>
+                            @* <div class="dropdown-user-details-name">@User.Identity.Name</div>
+                            <div class="dropdown-user-details-email">@User.FindFirst(ClaimTypes.Email).Value</div> *@
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
@@ -63,16 +63,16 @@
                         </a>
                         <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
                             <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" asp-area="Cms" asp-controller="Languages" asp-action="Index">Çeviri Dilleri</a>
+                                @* <a class="nav-link" asp-area="Cms" asp-controller="Languages" asp-action="Index">Çeviri Dilleri</a> *@
                                 <a class="nav-link" asp-area="Cms" asp-controller="Categories" asp-action="Index">Kategori</a>
-                                <a class="nav-link" asp-area="Cms" asp-controller="Sliders" asp-action="Index">Slider</a>
+                                @* <a class="nav-link" asp-area="Cms" asp-controller="Sliders" asp-action="Index">Slider</a>
                                 <a class="nav-link" asp-area="Cms" asp-controller="Pages" asp-action="Index">Sayfalar</a>
                                 <a class="nav-link" asp-area="Cms" asp-controller="Products" asp-action="Index">Ürünler</a>
                                 <a class="nav-link" asp-area="Cms" asp-controller="Receipts" asp-action="Index">İpuçları</a>
-                                <a class="nav-link" asp-area="Cms" asp-controller="Advertisings" asp-action="Index">Reklamlar</a>
+                                <a class="nav-link" asp-area="Cms" asp-controller="Advertisings" asp-action="Index">Reklamlar</a> *@
                             </nav>
                         </div>
-                        <div class="sidenav-menu-heading">Ayarlar</div>
+                        @* <div class="sidenav-menu-heading">Ayarlar</div>
                         <a class="nav-link" asp-area="Cms" asp-controller="Letter" asp-action="Index">
                             <div class="nav-link-icon"><i data-feather="mail"></i></div>
                             Gelen Mesajlar
@@ -80,12 +80,12 @@
                         <a class="nav-link" asp-area="Cms" asp-controller="AppSeos" asp-action="Index">
                             <div class="nav-link-icon"><i data-feather="tool"></i></div>
                             Sayfa Seo Ayarları
-                        </a>
+                        </a> 
                         <a class="nav-link" asp-area="Cms" asp-controller="AppConfigs" asp-action="Index">
                             <div class="nav-link-icon"><i data-feather="settings"></i></div>
                             Genel Ayarlar
-                        </a>
-                    </div>
+                        </a> 
+                    </div> *@
                 </div>
                 <div class="sidenav-footer">
                     <div class="sidenav-footer-content">

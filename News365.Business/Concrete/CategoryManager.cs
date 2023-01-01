@@ -25,7 +25,7 @@ public class CategoryManager : ICategoryService
 
      public async Task<IDataResult<List<Category>>> GetCategoryListAsync()
     {
-        var resultList = await _categoryDal.GetListAsync(x => x.Id == null);
+        var resultList = await _categoryDal.GetListAsync();
         return new SuccessDataResult<List<Category>>(resultList.ToList());
     }
 }

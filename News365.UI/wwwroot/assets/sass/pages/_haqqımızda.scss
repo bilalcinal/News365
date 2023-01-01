@@ -1,0 +1,121 @@
+
+.haqqımızda-general-main{position: relative; min-height: 100vh;
+    background-color: #0f779f;
+    @include padding(70px 0 140px);
+.haqqımızda-main{
+    .haqqımızda-heading{
+            @include font-size(150px);
+            font-family: $arful;
+            color: #fff;
+            
+            opacity: 0.1;
+    }
+    .haqqımızda-main-text{
+        .haqqımızda-image-main{ display: flex;  @include margin(70px 0); align-items: flex-end;
+            justify-content: center;
+            .haqqımızda-image{
+                object-fit: contain;
+                object-position: bottom;
+            }
+            .left-haq{
+                @include haqqımızdaleft;
+                z-index: 0;
+                height: 280px;
+                @include desktop-l{
+                    height: 228px;
+                }
+                @include desktop-sm{
+                    height: 156px;
+                }
+                @include mobile-display{
+                    height: 126px;
+                    position: relative;
+                    left: -64px;
+                }
+                @include mobile-l{
+                    left: -81px;
+                    height: 83px;
+                }
+            }
+            .center-haq{
+                @include haqqımızdacenter;
+                z-index: 1;
+                height: 280px;
+                @include desktop-l{
+                    height: 228px;
+                }
+                @include desktop-sm{
+                    height: 156px;
+                }
+                @include mobile-display{
+                    height: 126px;
+                }
+                @include mobile-l{
+                    height: 83px;
+                }
+            }
+            .right-haq{
+                @include haqqımızdaright;
+                z-index: 2;
+                height: 170px;
+                @include desktop-l{
+                    height: 121px;
+                }
+                @include desktop-sm{
+                    height: 111px;
+                }
+                @include mobile-display{
+                    height: 88px;
+                    z-index: 0;
+                    position: relative;
+                    left: 73px;
+                }
+                @include mobile-l{
+                    height: 54px;
+                }
+            }
+        }
+  
+        p{
+            color: #fff;
+            margin-bottom: 30px;
+            line-height: 22px;
+            width: 100%;
+            padding: 20px;
+            @include font-size(16px);
+            &:last-child{
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+.haqqımızda-top{
+    top: 128px;
+    right: -119px;
+    @include haqımızda-top-right;
+    @include desktop-l{
+        width: 258px;
+    }
+    @include desktop-sm{
+        display: none;
+    }
+    @include mobile-display{
+        display: none;
+    }
+}
+.haqqımızda-bottom{
+    bottom: 182px;
+    left: -75px;
+    @include haqımızda-bottom-left;
+    @include desktop-l{
+        width: 150px;
+        bottom: 342px;
+    }
+    @include desktop-sm{
+        display: none;
+    }
+    @include mobile-display{
+        display: none;
+    }
+}
+}

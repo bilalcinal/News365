@@ -1,0 +1,37 @@
+.mahsul-card { display: block;
+    background-color: transparent; height: 340px;
+    padding: 37px 24px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    justify-content: space-between;
+    @include mobile-l {     height: 247px; }
+
+    @include mobile-xsm {     height: 206px; }
+
+    &:hover { @extend %transition3; background-color: #fff; border-color: #fff;
+        p{
+            color: #0f779f;
+        }
+    }
+
+    .mahsul-card-image { width: 80%;     height: 189px;
+        object-fit: contain; object-position: bottom; 
+        @include mobile-xl{
+            height: 153px;
+        }
+        
+        @include mobile-l {     height: 154px; }
+
+        @include mobile-xsm {     height: 117px; }
+    }
+
+    p { text-align: center; line-height: 22px;  color: #fff;
+        font-size: 20px;
+        font-family: $medium;
+        @extend %transition3;
+        @include mobile-l{
+            font-size: 16px;
+            margin-top: 16px;
+        }
+    }
+}

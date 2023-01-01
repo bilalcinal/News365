@@ -1,0 +1,26 @@
+.layiha-main { @include padding-bottom(80px); 
+
+    .reklam-player-card { border-radius: 15px; overflow: hidden; 
+        box-sizing: border-box; overflow: hidden; position: relative; display: block; 
+
+        img { display: block; background-size: cover; background-position: center center; position: absolute; width: 100%; top: 0; border-radius: .3em; overflow: hidden; height: 100%; 
+            object-fit: cover; }
+
+        &::before { content: ""; display: block; padding-bottom: 51%; height: 0; }
+
+        &:hover { @extend %transition3; 
+
+            &::after { opacity: 1; }
+        }
+
+        &::after { content: ''; position: absolute; top: 0; width: 100%; height: 100%; background-color: rgba(7, 82, 111, 0.71); opacity: 0; 
+            @extend %transition3; }
+
+        i { color: #fff; @include font-size(80px);     z-index: 1; }
+
+        .after-color{
+            background-color: rgba(7, 82, 111, 0.32);
+            
+        }
+    }
+}

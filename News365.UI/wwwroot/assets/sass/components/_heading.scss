@@ -1,0 +1,26 @@
+.partner-heading{
+    @include padding(70px 0);
+    .heading-text{
+        color: #07526f;
+        @include font-size(40px);
+        font-family: $bold;
+    }
+    .mahsullarımız-heading-text{
+        color: #ffffff;
+    }
+    .heading-text-p{
+        @include font-size(17px);
+        line-height: 22px;
+        font-family: $medium;
+        color: #0f779f;
+        width: 80%;
+        margin: auto;
+        @include mobile-l{
+            width: 100%;
+            font-size: 15px;
+        }
+    }
+    .mahsul-heading-text-p{
+        color: #ffffff;
+    }
+}

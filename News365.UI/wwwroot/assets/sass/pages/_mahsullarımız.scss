@@ -1,0 +1,156 @@
+.mahsul-section {
+    .mahsullarımız-main { @include padding-bottom(140px)
+    }
+
+    @include mobile-l { padding: 20px 0 90px; }
+}
+
+
+.mahsul-detay-general {position: relative; 
+    .background-right {    width: 70%; position: absolute;     right: -230px;  height: 100%; z-index: -1;
+        @include desktop-xl{
+            width: 96%;
+            right: -549px;
+        }
+        @include desktop-l{
+            width: 92%;
+    right: -500px;
+        }
+        @include desktop-sm{
+            width: 100%;
+            right: -426px;
+        }
+        @include mobile-display{
+            display: none;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .mahsul-detay-main { align-items: center; min-height: 100vh; 
+        @include mobile-display{
+            @include padding(100px 0);
+        }
+        .mahsul-detay-left { position: relative; 
+
+            .mahsul-detay-img {     height: 500px;
+                 -o-object-fit: contain; 
+                object-fit: contain; -o-object-position: bottom; 
+                object-position: bottom; 
+                margin-right: auto;
+                display: block;
+                &.active { @include arrowefekt; }
+
+                @include desktop-xl{
+                    height: 400px;
+                }
+                @include desktop-l{
+                    height: 350px;
+                }
+                @include desktop-sm{
+                    height: 300px;
+                }
+
+                @include mobile-display{
+                    margin-left: auto;
+                    height: 300px;
+                }
+                @include mobile-l{
+                    height: 232px;
+                }
+
+
+            }
+        }
+
+        .mahsul-detay-right { padding-left: 70px;  
+            @include mobile-display{
+                padding-left: 0px;
+            }
+            .mahsul-name { margin-bottom: 30px; 
+                @include font-size(35px);
+                color: #fff;
+                font-family: $semibold;
+                @include mobile-display{
+                    color: #0f779f;
+                    margin-top: 40px;
+                    text-align: center;
+                }
+            }
+
+            .mahsul-text { line-height: 22px; overflow: hidden; white-space: inherit; text-overflow: ellipsis;
+                 display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical; width: 80%;
+                    @include desktop-xl{
+                        width: 100%;
+                    }
+                    @include desktop-l{
+                        width: 100%;
+                    }
+                    @include desktop-sm{
+                        width: 100%;
+                    }
+                    @include mobile-display{
+                        color: #0f779f;
+                        text-align: center;
+                        width: 100%;
+                    }
+                 @include font-size(17px);
+                 color: #fff;
+                 font-family: $medium;
+                
+                }
+
+            .secim-gruop { @include margin-top(90px); 
+
+                p {font-size: 17px; color: #fff; }
+
+                .secim-list { margin-top: 30px; 
+                    @include mobile-l{
+                        justify-content: center;
+                    }
+                    .secim-item { margin-right: 20px; margin-bottom: 20px; cursor: pointer; width: 114px; text-align: center;
+                         border: 1px solid #fff; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                          padding: 10px 0; border-radius: 50px; 
+                          color: #fff;
+
+                          @extend %transition3;
+
+                            @include desktop-l{
+                                margin-right: 10px;
+                            }
+                            @include desktop-sm{
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                            }
+                            @include mobile-display{
+                                border-color: #0f779f;
+                                color: #0f779f;
+                            }
+                        &.active,
+                        &:hover { background-color: #fff; color: #7e3a7a; 
+                            @include mobile-display{
+                                background-color: #0f779f;
+                                color: #fff;
+                            }
+                        }
+
+                        span { display: block; }
+                    }
+                }
+            }
+        }
+    }
+
+    .mahsullar-detay-top{
+        position: absolute;
+        right: -106px;
+        top: 56px;
+        @include mobile-display{
+            display: none;
+        }
+    }
+
+}
