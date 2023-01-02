@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using News365.Business.Abstract;
+using News365.Business.Contants;
 using News365.Entities.Concrete;
 using News365.UI.Areas.Cms.Models;
 
@@ -54,6 +55,20 @@ public class CategoriesController : Controller
       return RedirectToAction("Index", "Category");
 
      }
+     
+      public async Task<IActionResult> Delete(Guid Id)
+    {
+        var row = await _categoryService.GetByCategoryIdAsync(Id);
+        if (row.Success)
+        {
+          
+          await _categoryService.UpdateAsync(row.Data);
+          TempData["Success"] = Messages.DeleteMessage;
+          return RedirectToAction(nameof(CategoriesController.Index));
+        }
+        return NotFound();
+    }
+
 
     
 

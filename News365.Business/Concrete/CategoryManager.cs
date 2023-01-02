@@ -28,4 +28,21 @@ public class CategoryManager : ICategoryService
         var resultList = await _categoryDal.GetListAsync();
         return new SuccessDataResult<List<Category>>(resultList.ToList());
     }
+
+     public async Task<IResult> UpdateAsync(Category category)
+    {
+        category.SlugUrl = UrlSeoHelper.UrlSeo(category.SlugUrl);
+        await _categoryDal.UpdateAsync(category);
+        return new SuccessResult(Messages.UpdateMessage);
+    }
+     public async Task<IResult> DeleteAsync(Category category)
+     {
+        await _categoryDal.UpdateAsync(category);
+        return new SuccessResult(Messages.UpdateMessage);
+     }
+     public async Task<IDataResult<Category>> GetByCategoryIdAsync(Guid CategoryId)
+    {
+        var result = await _categoryDal.GetFirstOrDefaultAsync();
+        return result != null ? new SuccessDataResult<Category>(result) : new ErrorDataResult<Category>(Messages.RecordMessage);
+    }
 }

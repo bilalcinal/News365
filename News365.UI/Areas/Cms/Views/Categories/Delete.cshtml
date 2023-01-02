@@ -1,19 +1,22 @@
 @model CategoryVM
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Delete";
 }
-<form method="post">
+
+<form method="post" asp-action="Delete">
+    <input asp-for="Category.Id" hidden/>
     <div class="border pt-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Create New Category</h2>
+            <h2 class="text-primary">Delete Category</h2>
+            <hr />
         </div>
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
-            <label asp-for="Category.Name"></label>
-            <input asp-for="Category.Name" class="form-control" />
-            <span asp-validation-for="Category.Name" class="text-danger"></span>
+            <label asp-for="Category.Id"></label>
+            <input asp-for="Category.Id" disabled class="form-control" />
+           
         </div>
-        <button type="submit" class="btn btn-primary" style="widht:150px">Create</button>
+        <button type="submit" class="btn btn-danger" style="widht:150px">Delete</button>
         <a asp-controller="Categories" asp-action="Index" class="btn btn-secondary" style="150px">
             Back to List
         </a>
