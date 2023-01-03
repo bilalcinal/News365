@@ -11,8 +11,8 @@ using News365.DataAccess.Concrete.Context;
 namespace News365.DataAccess.Migrations
 {
     [DbContext(typeof(News365DbContext))]
-    [Migration("20221229114736_Mig-2")]
-    partial class Mig2
+    [Migration("20230102194101_Mig-1")]
+    partial class Mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

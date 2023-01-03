@@ -35,14 +35,14 @@ public class CategoryManager : ICategoryService
         await _categoryDal.UpdateAsync(category);
         return new SuccessResult(Messages.UpdateMessage);
     }
-     public async Task<IResult> DeleteAsync(Category category)
+     public async Task<IResult> RemoveAsync(Category category)
      {
-        await _categoryDal.UpdateAsync(category);
+        await _categoryDal.RemoveAsync(category);
         return new SuccessResult(Messages.UpdateMessage);
      }
      public async Task<IDataResult<Category>> GetByCategoryIdAsync(Guid CategoryId)
     {
-        var result = await _categoryDal.GetFirstOrDefaultAsync();
+        var result = await _categoryDal.GetFirstOrDefaultAsync(x => x.Id == CategoryId);
         return result != null ? new SuccessDataResult<Category>(result) : new ErrorDataResult<Category>(Messages.RecordMessage);
     }
 }

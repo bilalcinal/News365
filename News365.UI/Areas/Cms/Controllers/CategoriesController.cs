@@ -21,7 +21,7 @@ public class CategoriesController : Controller
     public async Task<IActionResult> Index()
     {
         var list = await _categoryService.GetCategoryListAsync();
-         if (list.Success)
+        if (list.Success)
         {
             return View(list.Data);
         }
@@ -38,38 +38,72 @@ public class CategoriesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CategoryVM categoryVM)
     {
-       if (!ModelState.IsValid)
-       {
-         return View(categoryVM);
-       } 
-         var category = new Category
-      
-      { 
-
-        Name = categoryVM.Category.Name,
-        SlugUrl = categoryVM.Category.SlugUrl
-      };
-       
-      var Category = await _categoryService.AddAsync(category);
-      
-      return RedirectToAction("Index", "Category");
-
-     }
-     
-      public async Task<IActionResult> Delete(Guid Id)
-    {
-        var row = await _categoryService.GetByCategoryIdAsync(Id);
-        if (row.Success)
+        if (!ModelState.IsValid)
         {
-          
-          await _categoryService.UpdateAsync(row.Data);
-          TempData["Success"] = Messages.DeleteMessage;
-          return RedirectToAction(nameof(CategoriesController.Index));
+            return View(categoryVM);
         }
-        return NotFound();
+        var category = new Category
+
+        {
+
+            Name = categoryVM.Category.Name,
+            SlugUrl = categoryVM.Category.SlugUrl
+        };
+
+        var Category = await _categoryService.AddAsync(category);
+
+        return RedirectToAction("Index", "Categories");
+
+    }
+
+    public async Task<IActionResult> Edit(Guid Id)
+    {
+        var result = await _categoryService.GetByCategoryIdAsync(Id);
+        var Category = result.Data;
+        return View(new CategoryVM()
+        {
+            Category = Category
+        });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(CategoryVM categoryVM)
+    {
+      if(categoryVM.Category.Id != null)
+      {
+        try
+        {
+            categoryVM.Category.SlugUrl = UrlSeoHelper.UrlSeo(categoryVM.Category.SlugUrl);
+            categoryVM.Category.Name = (categoryVM.Category.Name);
+            var categoryUpdate = await _categoryService.UpdateAsync(categoryVM.Category);
+            if (categoryUpdate.Success)
+            TempData["Success"] = categoryUpdate.Message;
+
+        }
+        catch (Exception ex)
+        {
+            TempData["Error"] = $"Beklenmedik Hata: {ex.Message}";
+        }
+        return RedirectToAction("Index", "Categories");
+
+      }
+       return NotFound();
+        
+    }
+    public async Task<IActionResult> Delete(Guid Id)
+    {
+        var result = await _categoryService.GetByCategoryIdAsync(Id);
+        var Category = result.Data;
+        await _categoryService.RemoveAsync(Category);
+        
+        TempData["Success"] = Messages.DeleteMessage;
+        return RedirectToAction("Index", "Categories");
     }
 
 
-    
-
 }
+
+
+
+
