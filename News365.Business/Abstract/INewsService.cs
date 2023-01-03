@@ -1,12 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using News365.Core.Utilities.Result;
+using News365.Entities.Concrete;
 
-namespace News365.Business.Abstract
+namespace News365.Business.Abstract;
+
+public interface INewsService
 {
-    public interface INewsService
-    {
-        
-    }
+    Task<IDataResult<NewsModel>> GetByNewsModelIdAsync(Guid NewsId);
+    Task<IDataResult<NewsModel>> AddAsync(NewsModel newsModel);
+    Task<IDataResult<List<NewsModel>>> GetNewsListAsync();
+    Task<IResult> UpdateAsync(NewsModel newsModel);
+    Task<IResult> RemoveAsync(NewsModel newsModel);
+
 }

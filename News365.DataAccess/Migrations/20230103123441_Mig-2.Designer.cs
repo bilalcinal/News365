@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News365.DataAccess.Concrete.Context;
 
@@ -10,9 +11,11 @@ using News365.DataAccess.Concrete.Context;
 namespace News365.DataAccess.Migrations
 {
     [DbContext(typeof(News365DbContext))]
-    partial class News365DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230103123441_Mig-2")]
+    partial class Mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,9 +61,6 @@ namespace News365.DataAccess.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FileCode")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("SlugUrl")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Title")

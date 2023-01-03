@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News365.DataAccess.Concrete.Context;
 
@@ -10,9 +11,11 @@ using News365.DataAccess.Concrete.Context;
 namespace News365.DataAccess.Migrations
 {
     [DbContext(typeof(News365DbContext))]
-    partial class News365DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230103125832_Mig-3")]
+    partial class Mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

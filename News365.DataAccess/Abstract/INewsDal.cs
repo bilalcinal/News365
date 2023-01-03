@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace News365.DataAccess.Abstract
+using News365.DataAccess.Concrete;
+using News365.Entities.Concrete;
+
+namespace News365.DataAccess.Abstract;
+
+public interface INewsDal : IEntityRepositoryAsync<NewsModel>
 {
-    public interface INewsDal
-    {
-        
-    }
+
 }

@@ -14,5 +14,10 @@ public class AutofacBusinessModule : Module
         builder.RegisterType<CategoryManager>().As<ICategoryService>();
         builder.RegisterType<EfCategoryDal>().As<ICategoryDal>();
         #endregion Category
+
+        #region News
+        builder.RegisterType<NewsManager>().As<INewsService>();
+        builder.RegisterType<EfNewsDal>().As<INewsDal>();
+        #endregion
     }   
 }
