@@ -8,7 +8,7 @@ using News365.UI.Areas.Cms.Models;
 namespace News365.UI.Areas.Cms.Controllers;
 
 [Area("Cms")]
-// [Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public class CategoriesController : Controller
 {
     private readonly ICategoryService _categoryService;

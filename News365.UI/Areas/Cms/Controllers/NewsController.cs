@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using News365.Business.Abstract;
 using News365.Business.Contants;
@@ -7,7 +8,7 @@ using News365.UI.Areas.Cms.Models;
 namespace News365.UI.Areas.Cms.Controllers;
 
 [Area("Cms")]
-// [Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public class NewsController : Controller
 {
     private readonly INewsService _newsService;

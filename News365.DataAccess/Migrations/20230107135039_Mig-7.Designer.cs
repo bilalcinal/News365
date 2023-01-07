@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News365.DataAccess.Concrete.Context;
 
@@ -10,9 +11,11 @@ using News365.DataAccess.Concrete.Context;
 namespace News365.DataAccess.Migrations
 {
     [DbContext(typeof(News365DbContext))]
-    partial class News365DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230107135039_Mig-7")]
+    partial class Mig7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,32 +108,6 @@ namespace News365.DataAccess.Migrations
                     b.HasIndex("CategoryId1");
 
                     b.ToTable("News");
-                });
-
-            modelBuilder.Entity("News365.Entities.Concrete.Slider", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("FileCode")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("SliderId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SlugUrl")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("News365.Entities.Concrete.User", b =>

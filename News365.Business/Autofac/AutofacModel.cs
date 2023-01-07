@@ -30,5 +30,11 @@ public class AutofacBusinessModule : Module
         builder.RegisterType<UserManager>().As<IUserService>();
         builder.RegisterType<EfUserDal>().As<IUserDal>();
         #endregion
+         
+        #region Slider
+        builder.RegisterType<SliderManager>().As<ISliderService>();
+        builder.RegisterType<EfSliderDal>().As<ISliderDal>();
+        #endregion
+        
     }   
 }
