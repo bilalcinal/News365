@@ -25,5 +25,10 @@ public class AutofacBusinessModule : Module
         builder.RegisterType<DocumentManager>().As<IDocumentService>();
         builder.RegisterType<EfDocumentDal>().As<IDocumentDal>();
         #endregion
+
+        #region User
+        builder.RegisterType<UserManager>().As<IUserService>();
+        builder.RegisterType<EfUserDal>().As<IUserDal>();
+        #endregion
     }   
 }

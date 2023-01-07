@@ -17,9 +17,22 @@ public class News365DbContext : DbContext
                 warnings.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning);
             });
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+        var admin = new User()
+		{
+			FullName = "Admin",
+			Email = "admin@admin.com",
+			Password = "Admin123",
+			Role = "Admin"
+		};
+		modelBuilder.Entity<User>().HasData(admin);
+		base.OnModelCreating(modelBuilder);
+    }
 
     public DbSet<Category> Categories { get; set; }
     public DbSet<NewsModel> News { get; set; }
     public DbSet<Document> Documents { get; set; }
+    public DbSet<User> Users { get; set;}
 }
 
