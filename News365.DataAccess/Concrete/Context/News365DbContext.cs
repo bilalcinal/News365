@@ -35,5 +35,6 @@ public class News365DbContext : DbContext
     public DbSet<Document> Documents { get; set; }
     public DbSet<User> Users { get; set;}
     public DbSet<Slider> Sliders {get; set;}
+    public DbSet<Page> Pages { get; set; }
 }
 

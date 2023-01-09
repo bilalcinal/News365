@@ -1,0 +1,103 @@
+﻿@model PageVM
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <span class="page-header-icon"><i data-feather="edit-3"></i></span>
+                        Update Page
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-xl px-4 mt-n10">
+    <form id="fromloading" enctype="multipart/form-data" asp-action="Edit" asp-antiforgery="true">
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="card card-header-actions mb-4">
+
+                    <div class="card-body">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="form-group mb-3">
+                                <label class="form-label" asp-for="Page.Title">Title </label>
+                                <input type="text" class="form-control" asp-for="Page.Title">
+                                <span class="text-danger" asp-validation-for="Page.Title"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" asp-for="Page.Description">Description</label>
+                                <textarea class="form-control" asp-for="Page.Description" rows="5" cols="5"></textarea>
+                                <span class="text-danger" asp-validation-for="Page.Description"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card mb-4">
+                    <div class="card-header">Fixed Fields</div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="file" class="form-label">Image</label>
+                            <input class="form-control" type="file" name="file" id="file">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="file" class="form-label">Image</label>
+                            <input class="form-control" type="file" name="file" id="file">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="file" class="form-label">Image</label>
+                            <input class="form-control" type="file" name="file" id="file">
+                        </div>
+                        
+                        <input type="hidden" asp-for="Page.Id" />
+                        <input type="hidden" asp-for="Page.FileCodeCenter" />
+                        <input type="hidden" asp-for="Page.FileCodeCenterLeft" />
+                        <input type="hidden" asp-for="Page.FileCodeCenterRight" />
+                        <div class="bn">
+                            <button type="submit" class="btn  btn-primary">Save</button>
+                            <a asp-action="Index" class="btn  btn-dark">Give up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Validation{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+    <script>
+        var allEditors = document.querySelectorAll('.editor');
+        for (var i = 0; i < allEditors.length; ++i) {
+            ClassicEditor
+                .create(allEditors[i])
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script>
+    <script>
+        $(document).on("submit", "#fromloading", function () {
+            $(this).find('button[type="submit"]')
+            $(this).find('button[type="submit"]').attr("disabled", "true");
+            $(this).find('button[type="submit"]').html('');
+            $(this).find('button[type="submit"]').append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Kaydet...')
+            setTimeout(() => {
+                $(this).find('.spinner-border').remove();
+                $(this).find('button[type="submit"]').append('Kaydet');
+                $(this).find('button[type="submit"]').attr("disabled", "false");
+            }, 2000);
+        });
+    </script>
+}

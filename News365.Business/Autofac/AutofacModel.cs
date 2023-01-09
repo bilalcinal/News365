@@ -35,6 +35,11 @@ public class AutofacBusinessModule : Module
         builder.RegisterType<SliderManager>().As<ISliderService>();
         builder.RegisterType<EfSliderDal>().As<ISliderDal>();
         #endregion
+
+        #region Page
+        builder.RegisterType<PageManager>().As<IPageService>();
+        builder.RegisterType<EfPageDal>().As<IPageDal>();
+        #endregion
         
     }   
 }
