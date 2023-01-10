@@ -1,8 +1,116 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@inject IConfiguration _configuration
+@model MainVM
+@section Styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="home-section1-main">
+    <div class="container-fluid p-0">
+        <div class="home-slider-div">
+            <div class="home-slider owl-carousel owl-theme">
+                @foreach (var item in Model.Sliders)
+                {
+                    <div class="item">
+                        <img src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt="">
+                        <div class="slider-text">
+                            <p class="slogan-heading">@item.SliderLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title</p>
+                            <p class="slogan-text">
+                                @item.SliderLanguages.FirstOrDefault(x => x.Language_Code == _lang).Description
+                            </p>
+                        </div>            
+                    </div>
+                }                
+            </div>
+        </div>        
+    </div>
+</section>
+
+
+<section class="mahsullar-slider-main">
+    <div class="col-md-9 mx-auto py-5">
+        <h2 class="text-center">@_configuration[$"PRODUCTS:{_lang}"]</h2>
+        <div class="home-mahsul-slider owl-carousel owl-theme my-5">
+            @foreach (var item in Model.Products)
+            {
+                <a asp-controller="Product" asp-action="Item" asp-route-_lang="@_lang" asp-route-slugurl="@item.SlugUrl" asp-route-productid="@item.Id" class="mahsul-card d-flex flex-column align-items-center mahsul-card-home">
+                    <img class="mahsul-card-image" src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt="">
+                    <p>@item.ProductLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title</p>
+                </a>
+            }            
+        </div>
+    </div>
+</section>
+
+
+<section class="home-category-section">
+    <div class="container-fluid p-0">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 gx-0 justify-content-center">
+            @foreach (var item in Model.Categories)
+            {
+                <div class="col">
+                    <a asp-controller="Product" asp-action="Index" asp-route-_lang="@_lang" asp-route-categoryName="@item.SlugUrl" asp-route-categoryId="@item.Id" class="home-category-card d-block position-relative">
+                        <img src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt="">
+                        <p class="category-name position-absolute top-50 start-50 translate-middle">@item.CategoryLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title</p>
+                        <div class="background-hovers position-absolute top-0">
+                            <span class="hover-cizgi w-100 h-100 d-block"></span>
+                        </div>
+                    </a>
+                </div>
+            }            
+        </div>
+    </div>
+</section>
+
+
+<section class="home-faydalı-maslahat">
+    <div class="container">
+        <div class="faydalı-maslahat-main position-relative">
+            <h2>@_configuration[$"USEFULTIPS:{_lang}"]</h2>
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3  gx-5 gy-5">
+                @foreach (var item in Model.Receipts)
+                {
+                    <div class="col">
+                        <a asp-controller="Receipt" asp-action="Item" asp-route-_lang="@_lang" asp-route-slugurl="@item.SlugUrl" asp-route-receiptid="@item.Id" class="maslahat-card position-relative d-block">
+                            <img src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" class="maslahat-image" alt="...">
+                            <div class="card-body p-3">
+                                <p class="card-text">
+                                    @item.ReceiptLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title
+                                </p>
+                                <span class="btn btn-maslahat position-absolute">
+                                    @_configuration[$"Etraflı:{_lang}"]
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                }                
+            </div>
+            <a asp-controller="Receipt" asp-action="Index" asp-route-_lang="@_lang" class="btn maslahat-dahacox  position-absolute end-0 top-0 d-flex align-items-center justify-content-center">@_configuration[$"DahaFazla:{_lang}"]</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="home-about-section">
+    <div class="container">
+        <h1 class="home-about-heading">@_configuration[$"ABOUT:{_lang}"]</h1>
+        <div class="row gx-5 about-home-main">
+            <div class="col-12 col-lg-6 col-xl-5">
+                <img class="home-about-image" src="/assets/img/test-image/Ev-Ege.jpg" alt="">
+            </div>
+            <div class="col-12 col-lg-6 col-xl-7 mt-3 mt-md-0">
+                <p>
+                    @Model.Pages.FirstOrDefault().PageLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title
+                </p>
+                <p>
+                    @Html.Raw(Model.Pages.FirstOrDefault().PageLanguages.FirstOrDefault(x => x.Language_Code == _lang).Description)
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+}
