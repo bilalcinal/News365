@@ -1,0 +1,35 @@
+﻿@inject IConfiguration _configuration
+
+@model NewsPageVM
+@section Styles{
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css" />
+}
+
+<section class="mahsul-section"">
+    <div class="container">
+        <div class="mahsullarımız-main">
+            <div class="col-md-10 col-lg-6 mx-auto partner-heading flex-column  text-center">
+                <p class="heading-text mahsullarımız-heading-text">
+                    @Model.Category.Name
+                </p>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-xl-11 col-xxl-10 mx-auto">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 gx-5 gy-5 gx-xl-5 gy-xl-5 mahsullar-card-main h-100 justify-content-center">
+                    @foreach (var item in Model.News)
+                    {
+                        <div class="col">
+                            <a asp-controller="News" asp-action="Item"asp-route-slugurl="@item.SlugUrl" asp-route-productid="@item.Id" class="mahsul-card d-flex flex-column align-items-center">
+                                <img class="mahsul-card-image" src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt="">
+                                <p>@item.Title</p>
+                            </a>
+                        </div>
+                    }                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
+}

@@ -1,0 +1,47 @@
+﻿@inject IConfiguration _configuration
+
+@model NewsModel
+
+@section Styles{
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+}
+
+<section>
+    <div class="mahsul-detay-general">
+        <div class="background-right">
+            <img src="/assets/img/icons/backmahsul-detay.png" alt="">
+        </div>
+        <div class="row gx-5 col-12 col-md-12 col-lg-11 col-xl-10 col-xxl-10 mx-auto mahsul-detay-main">
+            <div class="col-12 col-md-12 col-lg-5">
+                <div class="mahsul-detay-left">
+                    <img class="mahsul-detay-img" src="@await Component.InvokeAsync("Image", new { FileCode = Model.FileCode })" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-7">
+                <div class="mahsul-detay-right">
+                    <p class="mahsul-name">@Model.Title</p>
+                    <p class="mahsul-text">
+                        @Model.Body
+                    </p>
+                    @* <div class="secim-gruop">
+                        <ul class="d-flex flex-wrap  secim-list">
+                            @foreach (var item in Model.Title)
+                            {
+                                <li class="secim-item" data-id="1">
+                                    <span class="name">@item.</span>
+                                </li>
+                            }                            
+                        </ul>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+        <img class="mahsullar-detay-top" src="/assets/img/icons/sağtop.webp" alt="">
+    </div>
+</section>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+}
