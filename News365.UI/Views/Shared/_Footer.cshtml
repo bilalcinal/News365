@@ -3,7 +3,6 @@
     string _lang = ViewBag.Lang ?? "tr";
     var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
     var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
-    var configs = await settings.GetByAppConfigAsync();
     var productCategories = (await categories.GetCategoryListAsync()).Data.ToList();
     var url = Context.Request.Path;
 }
@@ -11,9 +10,9 @@
 <footer>
     <div class="container">
         <div class="footer-main w-100 text-center  flex-column justify-content-center align-items-center">
-            <div class="footer-logo d-block mx-auto position-relative">
+            @* <div class="footer-logo d-block mx-auto position-relative">
                 <img src="@await Component.InvokeAsync("Image", new { FileCode = configs.Data.FileCode })" alt="">
-            </div>
+            </div> *@
             <ul class="d-lg-flex justify-content-center mt-3 menu-footer-list align-items-center">
                 <li class="mt-2 mt-lg-0 me-0 me-lg-4 menu-footer-item">
                     <a asp-controller="Home" asp-action="Index" asp-route-_lang="@_lang">
@@ -26,50 +25,11 @@
                     </a>
                 </li>
                 <li class="mt-2 mt-lg-0 me-0 me-lg-4 menu-footer-item dropdown">
-                    <a class="btn btn-footer-down" type="button" id="mahsulfooter"
+                    <a class="btn btn-footer-down" type="button" id="NewsFooter"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        @_configuration[$"PRODUCTS:{_lang}"]
+                        @_configuration[$"NEWS:{_lang}"]
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        @foreach (var item in productCategories)
-                        {
-                            <li><a class="dropdown-item" asp-controller="Product" asp-action="Index" asp-route-_lang="@_lang" asp-route-categoryName="@item.SlugUrl" asp-route-categoryId="@item.Id">@item.CategoryLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title</a></li>
-                        }
-                    </ul>
-                    </li>
-                <li class="mt-2 mt-lg-0 me-0 me-lg-4 menu-footer-item">
-                    <a asp-controller="Receipt" asp-action="Index" asp-route-_lang="@_lang">
-                        @_configuration[$"USEFULTIPS:{_lang}"]
-                    </a>
-                </li>
-                <li class="mt-2 mt-lg-0 me-0 me-lg-4 menu-footer-item">
-                    <a asp-controller="Advertising" asp-action="Index" asp-route-_lang="@_lang">
-                        @_configuration[$"ADS:{_lang}"]
-                    </a>
-                </li>
-                <li class="mt-2 mt-lg-0 me-0 me-lg-4 menu-footer-item">
-                    <a asp-controller="Contact" asp-action="Index" asp-route-_lang="@_lang">
-                        @_configuration[$"CONTACTUS:{_lang}"]
-                    </a>
-                </li>
-            </ul>
-            <ul class="d-flex justify-content-center mt-5">
-                <li class="me-4 footer-social-item">
-                    <a target="_blank" href="@configs.Data.Facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                </li>
-                <li class="me-4 footer-social-item">
-                    <a target="_blank" href="@configs.Data.Instagram">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                </li>
-                <li class="footer-social-item">
-                    <a target="_blank" href="@configs.Data.Youtube">
-                        <i class="bi bi-youtube"></i>
-                    </a>
-                </li>
-            </ul>
+            
         </div>
         <div class="footer-alt d-flex justify-content-between align-items-center mt-3 pb-3">
             <p class="footer-copright">Copyright @DateTime.Now.Year, Apollo. All right reserved</p>

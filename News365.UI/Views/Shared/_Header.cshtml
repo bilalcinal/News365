@@ -1,10 +1,9 @@
 ﻿@inject IConfiguration _configuration
 @{  
-    string _lang = ViewBag.Lang ?? "tr";
+    
     var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
     var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
-    var configs = await settings.GetByAppConfigAsync();
-    var productCategories = (await categories.GetCategoryListAsync()).Data.ToList();
+    var newsCategories = (await categories.GetCategoryListAsync()).Data.ToList();
     var url = Context.Request.Path;
 }
 
@@ -12,40 +11,33 @@
     <nav id="navs" class="navbar navbar-expand-lg p-0 m-0 flex-column">
         <div class="container">
             <div class="navbar-main w-100 d-flex align-items-center justify-content-between position-relative">
-                <a class="navbar-brand d-block p-0 m-0" asp-controller="Home" asp-action="Index" asp-route-_lang="@_lang">
+                @* <a class="navbar-brand d-block p-0 m-0" asp-controller="Home" asp-action="Index" asp-route-_lang="@_lang">
                     <img src="@await Component.InvokeAsync("Image", new { FileCode = configs.Data.FileCode })" alt="navbarlogo">
-                </a>
+                </a> *@
                 <div class="navbar-collapse flex-grow-0">
                     <ul class="navbar-nav w-100 h-100  align-items-center justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" asp-controller="Home" asp-action="Index" asp-route-_lang="@_lang">
-                                @_configuration[$"HOME:{_lang}"]
+                            <a class="nav-link d-flex align-items-center" asp-controller="Home" asp-action="Index">
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" asp-controller="About" asp-action="Index" asp-route-_lang="@_lang">
-                                @_configuration[$"ABOUT:{_lang}"]
+                            <a class="nav-link d-flex align-items-center" asp-controller="About" asp-action="Index">
                             </a>
                         </li>
                         <li class="nav-item dropdown mahsullar">
-                            <span class="nav-link d-flex align-items-center" id="mahsullardown">
-                                @_configuration[$"PRODUCTS:{_lang}"]
+                            <span class="nav-link d-flex align-items-center" id="newsdown">
+                                @_configuration[$"NEWS"]
                                 <i class="bi bi-chevron-down arrow"></i>
                             </span>
                             <ul class="dropdown-menu w-100 ">
-                                @foreach (var item in productCategories)
+                                @foreach (var item in newsCategories)
                                 {
-                                    <li><a class="dropdown-item" asp-controller="Product" asp-action="Index" asp-route-_lang="@_lang" asp-route-categoryName="@item.SlugUrl" asp-route-categoryId="@item.Id">@item.CategoryLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title</a></li>
+                                    <li><a class="dropdown-item" asp-controller="News" asp-action="Index"  
+                                    asp-route-categoryName="@item.SlugUrl" asp-route-categoryId="@item.Id">@item.Name</a></li>
                                 }
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" asp-controller="Receipt" asp-action="Index" asp-route-_lang="@_lang">
-                                @_configuration[$"USEFULTIPS:{_lang}"]
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
+                         @* <li class="nav-item">
                             <a class="nav-link d-flex align-items-center" asp-controller="Advertising" asp-action="Index" asp-route-_lang="@_lang">
                                 @_configuration[$"ADS:{_lang}"]
                             </a>
@@ -54,20 +46,20 @@
                             <a class="nav-link d-flex align-items-center" asp-controller="Contact" asp-action="Index" asp-route-_lang="@_lang">
                                 @_configuration[$"CONTACTUS:{_lang}"]
                             </a>
-                        </li>
+                        </li> *@
                     </ul>
                 </div>
-                <div class="dropdown down-lang position-relative">
+                @* <div class="dropdown down-lang position-relative">
                     <span class="lang-link d-block">
                         <i class="bi bi-globe2"></i>
-                        <span class="position-relative">@_lang.ToUpper()</span>
+                        <span class="position-relative">ToUpper()</span>
                     </span>
                     <ul class="dropdown-menu js-down lang-downs">
                         <li class="dropdown-item lang-items"><a asp-controller="Language" asp-action="Change" asp-route-_lang="tr" asp-route-slugurl="@url" type="button">TR</a></li>
                         <li class="dropdown-item lang-items"><a asp-controller="Language" asp-action="Change" asp-route-_lang="ru" asp-route-slugurl="@url" type="button">RU</a> </li>
                         <li class="dropdown-item lang-items"><a asp-controller="Language" asp-action="Change" asp-route-_lang="en" asp-route-slugurl="@url" type="button">EN</a> </li>
                     </ul>
-                </div>
+                </div> *@
                 <button type="button" class="btn navicon d-none"></button>
             </div>
         </div>

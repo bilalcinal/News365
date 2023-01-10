@@ -1,21 +1,18 @@
 @inject IConfiguration _configuration
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    string _lang = ViewBag.Lang ?? "tr";
-}
-@model IEnumerable<News>
+@model IEnumerable<NewsModel>
 
 @if (Model != null)
 {
-    @foreach (var item in Model.OrderBy(x => x.OrderBy))
+    @foreach (var item in Model)
     {
         <div class="col mb-5">
-            <a asp-controller="Product" asp-action="Item" asp-route-_lang="@_lang" asp-route-slugurl="@item.SlugUrl" asp-route-productid="@item.Id" class="mahsullar-card">
+            <a asp-controller="News" asp-action="Item" asp-route-slugurl="@item.SlugUrl" asp-route-productid="@item.Id" class="mahsullar-card">
                 <div class="mahsullar-body">
                     <div class="mahsullar-card-image">
                         <img src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode  })" alt="">
                     </div>
-                    <p class="mahsul-name">@item.ProductLanguages.FirstOrDefault(x => x.Language_Code == _lang).Title </p>
+                    <p class="mahsul-name">@item.Title</p>
                 </div>
                 <span class="mahsul-arrow">
                     <i class="bi bi-chevron-right"></i>

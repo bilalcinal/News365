@@ -1,0 +1,67 @@
+@inject IConfiguration _configuration
+@model MainVM
+@section Styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+}
+
+<section class="home-section1-main">
+    <div class="container-fluid p-0">
+        <div class="home-slider-div">
+            <div class="home-slider owl-carousel owl-theme">
+                @foreach (var item in Model.Sliders)
+                {
+                    <div class="item">
+                        <img src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt="">
+                        <div class="slider-text">
+                            <p class="slogan-heading">@item.Title</p>
+                            <p class="slogan-text">
+                                @item.Description
+                            </p>
+                        </div>            
+                    </div>
+                }                
+            </div>
+        </div>        
+    </div>
+</section>
+
+
+<section class="mahsullar-slider-main">
+    <div class="col-md-9 mx-auto py-5">
+        <h2 class="text-center">@_configuration[$"NEWS"]</h2>
+        <div class="home-mahsul-slider owl-carousel owl-theme my-5">
+            @foreach (var item in Model.News)
+            {
+                <a asp-controller="News" asp-action="Item" asp-route-slugurl="@item.SlugUrl" asp-route-productid="@item.Id" class="mahsul-card d-flex flex-column align-items-center mahsul-card-home">
+                    <img class="mahsul-card-image" src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt="">
+                    <p>@item.Title</p>
+                </a>
+            }            
+        </div>
+    </div>
+</section>
+
+
+<section class="home-category-section">
+    <div class="container-fluid p-0">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 gx-0 justify-content-center">
+            @foreach (var item in Model.Categories)
+            {
+                <div class="col">
+                    <a asp-controller="News" asp-action="Index" asp-route-categoryName="@item.SlugUrl" asp-route-categoryId="@item.Id" class="home-category-card d-block position-relative">
+                        @* <img src="@await Component.InvokeAsync("Image", new { FileCode = item.FileCode })" alt=""> *@
+                        <p class="category-name position-absolute top-50 start-50 translate-middle">@item.Name</p>
+                        <div class="background-hovers position-absolute top-0">
+                            <span class="hover-cizgi w-100 h-100 d-block"></span>
+                        </div>
+                    </a>
+                </div>
+            }            
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+}
